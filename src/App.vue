@@ -1,28 +1,54 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<label class="text-reader">
+			<input type="file" id="fileInput" @change.prevent="handleUpload">
+		</label>
+		<assessment v-show="false" :items="items" ref="assessment" />
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Assessment from './components/Assessment'
+import Papa from 'papaparse'
+import { createItems } from './utils/csv'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		'assessment': Assessment
+	},
+	data () {
+		return {
+			json: '',
+			items: null
+		}
+	},
+	computed: {
+	},
+	methods: {
+		handleUpload( e ) {
+			const reader = new FileReader()
+			const file = e.target.files[0]
+			reader.readAsText( file )
+			reader.onload = ( event ) => {
+				this.getCSVData( event.target.result )
+			}
+			reader.onerror = ( e ) => {
+				console.log( e )
+			}
+		},
+		getCSVData ( file ) {
+			Papa.parse( file, {
+				header: true,
+				complete: ( results ) => {
+					this.json = results
+					this.items = createItems( results.data )
+				},
+				error: function ( error ) {
+					console.log( error )
+				}
+			} )
+		}
+	}
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
