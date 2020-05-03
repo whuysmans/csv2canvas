@@ -23,7 +23,9 @@ Vue.config.ignoredElements = [
 	'varequal',
 	'setvar',
 	'questestinterop',
-	'assessment'
+	'assessment',
+	'not',
+	'and'
 ]
 
 new Vue({
