@@ -1,8 +1,69 @@
 <template>
 	<div id="app">
 		<h2>CSV to Canvas converter</h2>
-		<h4>csv format:</h4>
-		<img src="./assets/csv-sample.png" alt="csv-sample" />
+		<h4>Export as csv with encoding utf-8. Excel format:</h4>
+		<!-- <img src="./assets/csv-sample.png" alt="csv-sample" /> -->
+		<table>
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>question</th>
+					<th>points</th>
+					<th>correct</th>
+					<th>ans1</th>
+					<th>ans2</th>
+					<th>ans3</th>
+					<th>ans4</th>
+					<th>ans5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>MC</td>
+					<td>Wie schreef Misdaad en Straf?</td>
+					<td>1</td>
+					<td>ans1</td>
+					<td>Dostojewski</td>
+					<td>Poetin</td>
+					<td>Belarus</td>
+					<td>Gogol</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>MC</td>
+					<td>Welke Amerikaanse president werd niet vermoord?</td>
+					<td>1</td>
+					<td>ans2</td>
+					<td>Lincoln</td>
+					<td>Johnson</td>
+					<td>Garfield</td>
+					<td>Kennedy</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>MR</td>
+					<td>Welke steden liggen in Noord-Amerika?</td>
+					<td>1</td>
+					<td>ans2 ans3 ans4</td>
+					<td>Bogota</td>
+					<td>Denver</td>
+					<td>Oklahoma</td>
+					<td>Paris</td>
+					<td>Riga</td>
+				</tr>
+				<tr>
+					<td>FIB</td>
+					<td>De inverse van een afgeleide is...</td>
+					<td>1</td>
+					<td></td>
+					<td>de integraal</td>
+					<td>een integraal</td>
+					<td>integraal</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
 		<div class="uploader">
 			<label class="text-reader">
 				<input type="file" id="fileInput" @change.prevent="handleUpload" class="btn btn-primary">
@@ -62,6 +123,16 @@ export default {
 html,body,* { box-sizing: border-box; font-size: 16px;}
 html,body   { height: 100%; text-align: center;}
 body        { padding: 2rem; background: #f8f8f8;}
+
+table {
+	table-layout: auto;
+	width: 80%;
+	border: 1px solid #5f6982;
+	border-spacing: 5px 1rem;
+	margin-bottom: 20px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
 
 h2 {
   font-family: "Roboto", sans-serif;
