@@ -1,7 +1,7 @@
 # questionbankimporter
 
 ## IN DEVELOPMENT!!
-#### not ready for use
+[sample csv](./src/assets/test.csv)
 
 ## Project setup
 ```
