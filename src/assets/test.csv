@@ -1,0 +1,5 @@
+type,question,points,correct,ans1,ans2,ans3,ans4,ans5
+MC,Wie schreef Misdaad en Straf?,1,ans1,Dostojewski,Poetin,Belarus,Gogol
+MC,Welke Amerikaanse president werd niet vermoord?,1,ans2,Lincoln,Johnson,Garfield,Kennedy
+MR,Welke steden liggen in Noord-Amerika?,1,ans2 ans3 ans4,Bogota,Denver,Oklahoma,Paris,Riga
+FIB,De inverse van een afgeleide is...,1,,een integraal,de integraal,integraal
