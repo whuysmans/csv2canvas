@@ -20,24 +20,31 @@
 				</qtimetadatafield>
 			</qtimetadata>
 		</itemmetadata>
-		<item-presentation :presentation="item.presentation" :respident="item.respident"></item-presentation>
+		<item-presentation v-if="isMC || isMR" :presentation="item.presentation" :respident="item.respident"></item-presentation>
+		<item-presentation-fib v-else-if="isFIB" :presentation="item.presentation" />
 		<item-processing v-if="isMC" :respident="item.respident"></item-processing>
 		<item-processing-mr 
 			v-else-if="isMR" 
 			:respident_correct="item.respident_correct" 
 			:respident_incorrect="item.respident_incorrect"
 		/>
+		<item-processing-fib v-else-if="isFIB" :responses="item.resprocessing.responses" />
 	</item>
 </template>
 <script>
 import ItemPresentation from './ItemPresentation'
 import ItemProcessing from './ItemProcessing'
 import ItemProcessingMR from './ItemProcessingMR'
+import ItemPresentationFIB from './ItemPresentationFIB'
+import ItemProcessingFIB from './ItemProcessingFIB'
+
 export default {
 	components: {
 		'item-presentation': ItemPresentation,
 		'item-processing': ItemProcessing,
-		'item-processing-mr': ItemProcessingMR
+		'item-processing-mr': ItemProcessingMR,
+		'item-presentation-fib': ItemPresentationFIB,
+		'item-processing-fib': ItemProcessingFIB
 	},
 	props: ['item'],
 	created () {
@@ -49,6 +56,9 @@ export default {
 		},
 		isMR () {
 			return this.item.type === 'multiple_answers_question'
+		},
+		isFIB () {
+			return this.item.type === 'short_answer_question'
 		}
 	}
 }

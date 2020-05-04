@@ -25,7 +25,9 @@ Vue.config.ignoredElements = [
 	'questestinterop',
 	'assessment',
 	'not',
-	'and'
+	'and',
+	'response_str',
+	'render_fib'
 ]
 
 new Vue({

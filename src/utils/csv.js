@@ -8,6 +8,9 @@ const createItems = ( json ) => {
 		} else if ( element.type === 'MR' )	{
 			const item = createMRItem( element )
 			items.push( item )
+		} else if ( element.type === 'FIB' ) {
+			const item = createFIBItem( element )
+			items.push( item )
 		}
 	});
 	return items
@@ -79,6 +82,34 @@ const createMRItem = ( element ) => {
 	item['respident_incorrect'] = incorrect_ids
 	item['original_answer_ids'] = original_answer_ids.join()
 	return item	
+}
+
+const createFIBItem = ( element ) => {
+	let item = {}
+	item['ident'] = getRandomIdent()
+	item['type'] = 'short_answer_question'
+	item['points'] = element.points
+	item['presentation'] = {}
+	item['presentation']['mattext'] = element.question
+	item['presentation']['rcardinality'] = 'Single'
+	item['resprocessing'] = {}
+	item['resprocessing']['responses'] = []
+	item['assessment_question_identifierref'] = getRandomIdent()
+	const keys = Object.keys( element )
+	const answerKeys = keys.filter( ( key ) => {
+		return key.includes( 'ans' ) && element[key] !== ''
+	} )
+	const original_answer_ids = []
+	answerKeys.forEach( ( key ) => {
+		const id = getAnswerId()
+		original_answer_ids.push( id )
+		let response = {}
+		response['ident'] = id
+		response['mattext'] = element[key]
+		item['resprocessing']['responses'].push( response )
+	})
+	item['original_answer_ids'] = original_answer_ids.join()
+	return item
 }
 
 const getAnswerId = () => {

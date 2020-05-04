@@ -45,6 +45,7 @@ export default {
 				// see FileSaver.js
 				saveAs( content, "import.zip");
 		});
+		//console.log( this.$el.outerHTML )
 	}
 }
 </script>
