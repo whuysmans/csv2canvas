@@ -66,7 +66,7 @@
 		</table>
 		<div class="uploader">
 			<label class="text-reader">
-				<input type="file" id="fileInput" @change.prevent="handleUpload" class="btn btn-primary">
+				<input type="file" id="fileInput" @change.prevent="handleUpload" class="btn btn-primary" accept=".csv">
 			</label>
 		</div>
 		<assessment v-show="false" :items="items" ref="assessment" />
