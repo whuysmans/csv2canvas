@@ -62,6 +62,17 @@
 					<td></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td>MFIB</td>
+					<td>De 2de grootste stad van Italië is [stad1] en de 3de grootste [stad2].</td>
+					<td>1</td>
+					<td></td>
+					<td>Milaan</td>
+					<td></td>
+					<td>Napels</td>
+					<td>Napoli</td>
+					<td></td>
+				</tr>	
 			</tbody>
 		</table>
 		<div class="uploader">
