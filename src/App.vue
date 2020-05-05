@@ -64,7 +64,7 @@
 				</tr>
 				<tr>
 					<td>MFIB</td>
-					<td>De 2de grootste stad van Italië is [stad1] en de 3de grootste [stad2].</td>
+					<td>De 2de grootste stad van Italië is [stad1] en de 3de [stad2].</td>
 					<td>1</td>
 					<td></td>
 					<td>Milaan</td>
