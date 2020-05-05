@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<h2>CSV to Canvas converter</h2>
-		<h4>Export as csv with encoding utf-8. Do not forget the header! Excel format:</h4>
+		<h4>Export as csv with encoding utf-8. CSV filename becomes questionbank name. Do not forget the header! Excel format:</h4>
 		<!-- <img src="./assets/csv-sample.png" alt="csv-sample" /> -->
 		<table>
 			<thead>
