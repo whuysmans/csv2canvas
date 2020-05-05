@@ -11,6 +11,9 @@ const createItems = ( json ) => {
 		} else if ( element.type === 'FIB' ) {
 			const item = createFIBItem( element )
 			items.push( item )
+		} else if ( element.type === 'MFIB' ) {
+			const item = createMFIBItem( element )
+			items.push( item )
 		}
 	});
 	return items
@@ -112,6 +115,41 @@ const createFIBItem = ( element ) => {
 	return item
 }
 
+const createMFIBItem = ( element ) => {
+	let item = {}
+	item['ident'] = getRandomIdent()
+	item['type'] = 'fill_in_multiple_blanks_question'
+	item['points'] = element.points
+	item['presentation'] = {}
+	item['presentation']['mattext'] = element.question
+	item['presentation']['responses'] = []
+	item['assessment_question_identifierref'] = getRandomIdent()
+	const keys = Object.keys( element )
+	const answerKeys = keys.filter( ( key ) => {
+		return key.includes( 'ans' )
+	} )
+	const original_answer_ids = []
+	let iteration = 0
+	answerKeys.forEach( ( key ) => {
+		if ( element[key] !== '' ) {
+			const id = getAnswerId()
+			original_answer_ids.push( id )
+			let response = {}
+			response['ident'] = id
+			response['mattext'] = element[key]
+			response['iteration'] = iteration
+			const placeholder = getMFIBPlaceholders( element.question )[iteration]
+			response['name'] = `response_${ placeholder }`
+			response['placeholder'] = placeholder
+			item['presentation']['responses'].push( response )
+		} else {
+			iteration++
+		}
+	} )
+	item['original_answer_ids'] = original_answer_ids.join()
+	return item
+}
+
 const getAnswerId = () => {
 	return Math.floor( ( Math.random() * 90000 ) + 10000 )
 }
@@ -119,6 +157,13 @@ const getAnswerId = () => {
 const getRandomIdent = () => {
 	const array = new Uint32Array( 4 )
 	return 'i' + window.crypto.getRandomValues(array).join('')
+}
+
+const getMFIBPlaceholders = ( str ) => {
+	let myArr = [...str.matchAll(/\[(.*?)\]/g)]
+	return myArr.reduce( ( acc, curr ) => {
+		return acc.concat( curr[1] )
+	}, [] )
 }
 
 export { createItems, getRandomIdent }

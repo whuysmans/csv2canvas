@@ -5,7 +5,7 @@
 		</material>
 		<response_lid ident="response1" :rcardinality="presentation.rcardinality">
 			<render_choice>
-				<response 
+				<mfib-response 
 					v-for="(response, index) in presentation.responses" 
 					:key="index" 
 					:ident="response.ident"
@@ -19,7 +19,7 @@
 import Response from './Response'
 export default {
 	components: {
-		response: Response
+		'mfib-response': Response
 	},
 	props: ['presentation'],
 	data () {

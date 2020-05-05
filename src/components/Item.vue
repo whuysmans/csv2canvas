@@ -22,6 +22,7 @@
 		</itemmetadata>
 		<item-presentation v-if="isMC || isMR" :presentation="item.presentation" :respident="item.respident"></item-presentation>
 		<item-presentation-fib v-else-if="isFIB" :presentation="item.presentation" />
+		<item-presentation-mfib v-else-if="isMFIB" :presentation="item.presentation" />
 		<item-processing v-if="isMC" :respident="item.respident"></item-processing>
 		<item-processing-mr 
 			v-else-if="isMR" 
@@ -29,6 +30,7 @@
 			:respident_incorrect="item.respident_incorrect"
 		/>
 		<item-processing-fib v-else-if="isFIB" :responses="item.resprocessing.responses" />
+		<item-processing-mfib v-else-if="isMFIB" :responses="item.presentation.responses" />
 	</item>
 </template>
 <script>
@@ -37,6 +39,8 @@ import ItemProcessing from './ItemProcessing'
 import ItemProcessingMR from './ItemProcessingMR'
 import ItemPresentationFIB from './ItemPresentationFIB'
 import ItemProcessingFIB from './ItemProcessingFIB'
+import ItemPresentationMFIB from './ItemPresentationMFIB'
+import ItemProcessingMFIB from './ItemProcessingMFIB'
 
 export default {
 	components: {
@@ -44,7 +48,9 @@ export default {
 		'item-processing': ItemProcessing,
 		'item-processing-mr': ItemProcessingMR,
 		'item-presentation-fib': ItemPresentationFIB,
-		'item-processing-fib': ItemProcessingFIB
+		'item-processing-fib': ItemProcessingFIB,
+		'item-presentation-mfib': ItemPresentationMFIB,
+		'item-processing-mfib': ItemProcessingMFIB
 	},
 	props: ['item'],
 	created () {
@@ -59,6 +65,9 @@ export default {
 		},
 		isFIB () {
 			return this.item.type === 'short_answer_question'
+		},
+		isMFIB () {
+			return this.item.type === 'fill_in_multiple_blanks_question'
 		}
 	}
 }
