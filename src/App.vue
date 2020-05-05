@@ -143,12 +143,12 @@ body        { padding: 2rem; background: #f8f8f8;}
 
 table {
 	table-layout: auto;
-	width: 80%;
+	width: 90%;
 	border: 1px solid #5f6982;
 	border-spacing: 5px 1rem;
 	margin-bottom: 20px;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 h2 {
