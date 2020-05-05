@@ -88,6 +88,7 @@
 import Assessment from './components/Assessment'
 import Papa from 'papaparse'
 import { createItems } from './utils/csv'
+import { mapActions } from 'vuex'
 
 export default {
 	name: 'App',
@@ -106,8 +107,10 @@ export default {
 		handleUpload( e ) {
 			const reader = new FileReader()
 			const file = e.target.files[0]
+			this.setFilename( file.name.slice(0, -4) )
 			reader.readAsText( file )
 			reader.onload = ( event ) => {
+				console.log( event )
 				this.getCSVData( event.target.result )
 			}
 			reader.onerror = ( e ) => {
@@ -125,7 +128,10 @@ export default {
 					console.log( error )
 				}
 			} )
-		}
+		},
+		...mapActions([
+			'setFilename'
+		])
 	}
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
 	<questestinterop :xmlns="xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-		<assessment ident="iba441da600eef46b9de3c734045202d8" title="QuestionBankExport">
+		<assessment ident="iba441da600eef46b9de3c734045202d8" :title="getFilename()">
 			<qtimetadata>
 				<qtimetadatafield>
 					<fieldlabel>cc_maxattempts</fieldlabel>
@@ -19,6 +19,7 @@ import { saveAs } from 'file-saver'
 import { getRandomIdent } from '../utils/csv'
 import JSZip from 'jszip'
 import { getAssessmentMeta, getIMSManifest } from '../utils/helpfiles'
+import { mapGetters } from 'vuex'
 
 export default {
 	components: {
@@ -38,7 +39,7 @@ export default {
 		zip.folder( 'import' )
 		zip.folder( `import/${ fileName }` )
 		zip.file( `import/${ fileName }/${ fileName }.xml`, this.$el.outerHTML )
-		zip.file( `import/${ fileName }/assessment_meta.xml`, getAssessmentMeta( fileName ) )
+		zip.file( `import/${ fileName }/assessment_meta.xml`, getAssessmentMeta( fileName, this.getFilename() ) )
 		zip.file( 'import/imsmanifest.xml', getIMSManifest( fileName ) )
 		zip.generateAsync({type:"blob"})
 			.then( function ( content ) {
@@ -46,6 +47,11 @@ export default {
 				saveAs( content, "import.zip");
 		});
 		// console.log( this.$el.outerHTML )
+	},
+	methods: {
+		...mapGetters([
+			'getFilename'
+		])
 	}
 }
 </script>

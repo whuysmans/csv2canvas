@@ -42,11 +42,11 @@ const getIMSManifest = ( id ) => {
 	`
 }
 
-const getAssessmentMeta = ( id ) => {
+const getAssessmentMeta = ( id, name ) => {
 	return `
 	<?xml version="1.0" encoding="UTF-8"?>
 	<quiz identifier="${ id }" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
-	  <title>QuestionBankExport</title>
+	  <title>${ name }</title>
 	  <description></description>
 	  <shuffle_answers>false</shuffle_answers>
 	  <scoring_policy>keep_highest</scoring_policy>
@@ -69,7 +69,7 @@ const getAssessmentMeta = ( id ) => {
 	  <only_visible_to_overrides>false</only_visible_to_overrides>
 	  <module_locked>false</module_locked>
 	  <assignment identifier="i7e4e62d6a7eea4dcf6351332feaafbe6">
-		 <title>QuestionBankExport</title>
+		 <title>${ name }</title>
 		 <due_at/>
 		 <lock_at/>
 		 <unlock_at/>

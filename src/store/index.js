@@ -6,21 +6,21 @@ Vue.use(Vuex)
 const createStore = () => {
 	return new Vuex.Store({
 		state: {
-			json: ''
+			fileName: 'new_bank'
 		},
 		mutations: {
-			SET_JSON( state, json ) {
-				state.json = json
+			SET_FILENAME( state, name ) {
+				state.fileName = name
 			}
 		},
 		actions: {
-			setJSON ( context, json ) {
-				context.commit( 'SET_JSON', json )
+			setFilename ( context, name ) {
+				context.commit( 'SET_FILENAME', name )
 			}
 		},
 		getters: {
-			getJSON ( state ) {
-				return state.json 
+			getFilename ( state ) {
+				return state.fileName 
 			}
 		}
 	})
