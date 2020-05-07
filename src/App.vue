@@ -76,6 +76,8 @@
 			</tbody>
 		</table>
 		<div class="uploader">
+			<p>Make sure that you include the header row, all in lowercase. The question types MC, FIB, etc. should be all capital letters.</p>
+			<p><a href="https://docs.google.com/spreadsheets/d/17PBwCYCCimmAdLunbslrw9U2x5PFOToElQohmwgSByQ/edit?usp=sharing" target="_blank">Here you can download a sample Excel sheet.</a></p>
 			<label class="text-reader">
 				<input type="file" id="fileInput" @change.prevent="handleUpload" class="btn btn-primary" accept=".csv">
 			</label>
