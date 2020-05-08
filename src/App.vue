@@ -76,11 +76,38 @@
 			</tbody>
 		</table>
 		<div class="uploader">
-			<p>Make sure that you include the header row, all in lowercase. The question types MC, FIB, etc. should be all capital letters.</p>
+			<p>Werkwijze:</p>
+			<ul>
+				<li>Download de voorbeeld excel via de link hieronder.</li>
+				<li>Laat de header rij zeker staan.</li>
+				<li>Gebruik in de eerste kolom (vraagtype) de exacte afkortingen in hoofdletters.</li>
+				<li>MC: multiple choice, MR: meerdere antwoorden, FIB: korte antwoord vraag, MFIB: meerdere fill in the blanks</li>
+				<li>De correct kolom werkt als volgt:</li>
+					<ul>
+						<li>voor MC: de header (kolomnaam) van het juiste antwoord</li>
+						<li>voor MR: de headernamen van alle juiste antwoorden, gescheiden door een spatie</li>
+						<li>voor FIB en MFIB moet in deze kolom niets ingevuld worden</li>
+					</ul>
+				<li>Je kan naar believen antwoordkolommen toevoegen, maar minimaal evenveel als het maximum aantal antwoorden over alle vragen heen.</li>
+				<li>Voor FIB vragen alle mogelijk juiste alternatieven (bv andere schrijfwijze) in de antwoordkolommen zetten.</li>
+				<li>Voor MFIB:</li>
+					<ul>
+						<li>In de question kolom moeten de placeholders tussen vierkante haken zonder spaties (dat is de Canvas-conventie).</li>
+						<li>In de antwoordkolommen komen de juiste antwoorden. Om de antwoorden van de respectievelijke placeholders uit elkaar te houden, moet er een lege kolom tussengelaten worden. Voor juiste alternatieven binnen 1 placeholder geen kolom tussenlaten. Als dit onduidelijk is, bekijk dan nog eens grondig het voorbeeld hierboven.</li>
+					</ul>
+				<li>Als vragen of antwoorden komma's bevatten, zet dan heel de vraag of antwoord tussen dubbele aanhalingstekens.</li>
+				<li>De Excel exporteren als csv met encoding utf-8. De naam van het csv-bestand bepaalt de naam van de toetsbank in Canvas. Pas eventueel aan.</li>
+				<li>Importeren in je Canvas-cursus via settings => import => qti-import.</li>
+			</ul>
 			<p><a href="https://docs.google.com/spreadsheets/d/17PBwCYCCimmAdLunbslrw9U2x5PFOToElQohmwgSByQ/edit?usp=sharing" target="_blank">Here you can download a sample Excel sheet.</a></p>
 			<label class="text-reader">
 				<input type="file" id="fileInput" @change.prevent="handleUpload" class="btn btn-primary" accept=".csv">
 			</label>
+			<div>
+				<p>
+					<a href="https://github.com/whuysmans/csv2canvas" target="_blank">github</a>
+				</p>	
+			</div>
 		</div>
 		<assessment v-show="false" :items="items" ref="assessment" />
 	</div>
@@ -151,6 +178,11 @@ table {
 	margin-bottom: 20px;
 	margin-left: 5%;
 	margin-right: 5%;
+}
+
+ul {
+	text-align: left;
+	margin-left: 15%;
 }
 
 h2 {
