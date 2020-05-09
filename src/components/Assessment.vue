@@ -1,6 +1,6 @@
 <template>
 	<questestinterop :xmlns="xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-		<assessment ident="iba441da600eef46b9de3c734045202d8" :title="getFilename()">
+		<assessment :ident="assessmentIdent" :title="getFilename()">
 			<qtimetadata>
 				<qtimetadatafield>
 					<fieldlabel>cc_maxattempts</fieldlabel>
@@ -27,7 +27,8 @@ export default {
 	},
 	data () {
 		return {
-			xmlns: 'http://www.imsglobal.org/xsd/ims_qtiasiv1p2'
+			xmlns: 'http://www.imsglobal.org/xsd/ims_qtiasiv1p2',
+			assessmentIdent: getRandomIdent()
 		}
 	},
 	props: ['items'],
@@ -39,7 +40,7 @@ export default {
 		zip.folder( 'import' )
 		zip.folder( `import/${ fileName }` )
 		zip.file( `import/${ fileName }/${ fileName }.xml`, this.$el.outerHTML )
-		zip.file( `import/${ fileName }/assessment_meta.xml`, getAssessmentMeta( fileName, this.getFilename() ) )
+		zip.file( `import/${ fileName }/assessment_meta.xml`, getAssessmentMeta( fileName, this.getFilename(), this.assessmentIdent ) )
 		zip.file( 'import/imsmanifest.xml', getIMSManifest( fileName ) )
 		zip.generateAsync({type:"blob"})
 			.then( function ( content ) {

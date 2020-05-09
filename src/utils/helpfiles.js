@@ -1,3 +1,14 @@
+import { getRandomIdent } from './csv'
+
+const resourceIdent = getRandomIdent()
+
+const options = {
+	year: 'numeric',
+	month: 'numeric',
+	day: 'numeric',
+	timeZone: 'Europe/Brussels'
+}
+
 const getIMSManifest = ( id ) => {
 	return `
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -14,7 +25,7 @@ const getIMSManifest = ( id ) => {
 			<imsmd:lifeCycle>
 			  <imsmd:contribute>
 				 <imsmd:date>
-					<imsmd:dateTime>2020-04-29</imsmd:dateTime>
+					<imsmd:dateTime>${ new Intl.DateTimeFormat('nl-BE', options).format(new Date()) }</imsmd:dateTime>
 				 </imsmd:date>
 			  </imsmd:contribute>
 			</imsmd:lifeCycle>
@@ -32,9 +43,9 @@ const getIMSManifest = ( id ) => {
 	  <resources>
 		 <resource identifier="${ id }" type="imsqti_xmlv1p2">
 			<file href="${ id }.xml"/>
-			<dependency identifierref="i7b0f71f5e8e4156d90785b02cfac4015"/>
+			<dependency identifierref="${ resourceIdent }"/>
 		 </resource>
-		 <resource identifier="i7b0f71f5e8e4156d90785b02cfac4015" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="iba441da600eef46b9de3c734045202d8/assessment_meta.xml">
+		 <resource identifier="${ resourceIdent }" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="iba441da600eef46b9de3c734045202d8/assessment_meta.xml">
 			<file href="${ id }/assessment_meta.xml"/>
 		 </resource>
 	  </resources>
@@ -42,7 +53,7 @@ const getIMSManifest = ( id ) => {
 	`
 }
 
-const getAssessmentMeta = ( id, name ) => {
+const getAssessmentMeta = ( id, name, ident ) => {
 	return `
 	<?xml version="1.0" encoding="UTF-8"?>
 	<quiz identifier="${ id }" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
@@ -77,7 +88,7 @@ const getAssessmentMeta = ( id, name ) => {
 		 <workflow_state>unpublished</workflow_state>
 		 <assignment_overrides>
 		 </assignment_overrides>
-		 <quiz_identifierref>iba441da600eef46b9de3c734045202d8</quiz_identifierref>
+		 <quiz_identifierref>${ ident }</quiz_identifierref>
 		 <allowed_extensions></allowed_extensions>
 		 <has_group_category>false</has_group_category>
 		 <points_possible>0.0</points_possible>
