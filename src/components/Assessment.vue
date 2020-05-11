@@ -1,6 +1,6 @@
 <template>
 	<questestinterop :xmlns="xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
-		<assessment :ident="assessmentIdent" :title="getFilename()">
+		<assessment>
 			<qtimetadata>
 				<qtimetadatafield>
 					<fieldlabel>cc_maxattempts</fieldlabel>
@@ -48,6 +48,9 @@ export default {
 		zip.generateAsync({type:"blob"})
 			.then( ( content ) => {
 				// see FileSaver.js
+				if ( ! this.$el.outerHTML.indexOf( 'item' ) ) {
+					return
+				}
 				saveAs( content, "import.zip");
 		});
 		// console.log( this.$el.outerHTML )

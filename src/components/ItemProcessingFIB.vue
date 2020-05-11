@@ -5,7 +5,7 @@
 		</outcomes>
 		<respcondition continue="No">
 			<conditionvar>
-				<varequal v-for="( response, index ) in responses" :key="index" respident="response1">
+				<varequal v-for="( response ) in responses" :key="response.ident" respident="response1">
 					{{ response.mattext }}
 				</varequal>
 			</conditionvar>
