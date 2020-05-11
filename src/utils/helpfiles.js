@@ -1,6 +1,7 @@
 import { getRandomIdent } from './csv'
 
 const resourceIdent = getRandomIdent()
+const manifestIdent = getRandomIdent()
 
 const options = {
 	year: 'numeric',
@@ -12,7 +13,7 @@ const options = {
 const getIMSManifest = ( id ) => {
 	return `
 	<?xml version="1.0" encoding="UTF-8"?>
-	<manifest identifier="i64ca80f71733e638171c4ce9f4768495" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/xsd/imscp_v1p1.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsmd_v1p2 http://www.imsglobal.org/xsd/imsmd_v1p2p2.xsd">
+	<manifest identifier="${ manifestIdent }" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/xsd/imscp_v1p1.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsmd_v1p2 http://www.imsglobal.org/xsd/imsmd_v1p2p2.xsd">
 	  <metadata>
 		 <schema>IMS Content</schema>
 		 <schemaversion>1.1.3</schemaversion>
@@ -79,7 +80,7 @@ const getAssessmentMeta = ( id, name, ident ) => {
 	  <show_correct_answers_last_attempt>false</show_correct_answers_last_attempt>
 	  <only_visible_to_overrides>false</only_visible_to_overrides>
 	  <module_locked>false</module_locked>
-	  <assignment identifier="i7e4e62d6a7eea4dcf6351332feaafbe6">
+	  <assignment>
 		 <title>${ name }</title>
 		 <due_at/>
 		 <lock_at/>
