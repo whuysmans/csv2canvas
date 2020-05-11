@@ -28,13 +28,16 @@ export default {
 	data () {
 		return {
 			xmlns: 'http://www.imsglobal.org/xsd/ims_qtiasiv1p2',
-			assessmentIdent: getRandomIdent()
+			assessmentIdent: getRandomIdent(),
+			firstTime: true
 		}
 	},
 	props: ['items'],
 	mounted () {
 	},
 	updated () {
+		
+		this.firstTime = false
 		let zip = new JSZip()
 		const fileName = getRandomIdent()
 		zip.folder( 'import' )
@@ -43,7 +46,7 @@ export default {
 		zip.file( `import/${ fileName }/assessment_meta.xml`, getAssessmentMeta( fileName, this.getFilename(), this.assessmentIdent ) )
 		zip.file( 'import/imsmanifest.xml', getIMSManifest( fileName ) )
 		zip.generateAsync({type:"blob"})
-			.then( function ( content ) {
+			.then( ( content ) => {
 				// see FileSaver.js
 				saveAs( content, "import.zip");
 		});

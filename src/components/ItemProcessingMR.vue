@@ -6,10 +6,10 @@
 		<respcondition continue="No">
 			<conditionvar>
 				<and>
-					<not v-for="( resp, index ) in respident_incorrect" :key="index">
+					<not v-for="( resp ) in respident_incorrect" :key="resp">
 						<varequal respident="response1">{{ resp }}</varequal>
 					</not>
-					<varequal v-for="( resp, index ) in respident_correct" :key="index" respident="response1">{{ resp }}</varequal>
+					<varequal v-for="( resp ) in respident_correct" :key="resp" respident="response1">{{ resp }}</varequal>
 				</and>
 			</conditionvar>
 			<setvar action="Set" varname="SCORE">100</setvar>

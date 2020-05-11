@@ -6,8 +6,8 @@
 		<response_lid ident="response1" :rcardinality="presentation.rcardinality">
 			<render_choice>
 				<mfib-response 
-					v-for="(response, index) in presentation.responses" 
-					:key="index" 
+					v-for="(response) in presentation.responses" 
+					:key="response.ident" 
 					:ident="response.ident"
 					:mattext="response.mattext"
 				/>
