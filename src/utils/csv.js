@@ -1,3 +1,5 @@
+import { trimQuotes } from './helperfunctions'
+
 const createItems = ( json ) => {
 	console.log( json )
 	let items = []
@@ -25,7 +27,7 @@ const createMCItem = ( element ) => {
 	item['type'] = 'multiple_choice_question'
 	item['points'] = element.points
 	item['presentation'] = {}
-	item['presentation']['mattext'] = element.question
+	item['presentation']['mattext'] = trimQuotes( element.question )
 	item['presentation']['rcardinality'] = 'Single'
 	item['presentation']['responses'] = []
 	item['assessment_question_identifierref'] = getRandomIdent()
@@ -42,7 +44,7 @@ const createMCItem = ( element ) => {
 		}
 		let response = {}
 		response['ident'] = id
-		response['mattext'] = element[key]
+		response['mattext'] = trimQuotes( element[key] )
 		item['presentation']['responses'].push( response )
 	})
 	item['original_answer_ids'] = original_answer_ids.join()
@@ -55,7 +57,7 @@ const createMRItem = ( element ) => {
 	item['type'] = 'multiple_answers_question'
 	item['points'] = element.points
 	item['presentation'] = {}
-	item['presentation']['mattext'] = element.question
+	item['presentation']['mattext'] = trimQuotes( element.question )
 	item['presentation']['rcardinality'] = 'Multiple'
 	item['presentation']['responses'] = []
 	item['assessment_question_identifierref'] = getRandomIdent()
@@ -78,7 +80,7 @@ const createMRItem = ( element ) => {
 		
 		let response = {}
 		response['ident'] = id
-		response['mattext'] = element[key]
+		response['mattext'] = trimQuotes (element[key] )
 		item['presentation']['responses'].push( response )
 	})
 	item['respident_correct'] = correct_ids
@@ -93,7 +95,7 @@ const createFIBItem = ( element ) => {
 	item['type'] = 'short_answer_question'
 	item['points'] = element.points
 	item['presentation'] = {}
-	item['presentation']['mattext'] = element.question
+	item['presentation']['mattext'] = trimQuotes( element.question )
 	item['presentation']['rcardinality'] = 'Single'
 	item['resprocessing'] = {}
 	item['resprocessing']['responses'] = []
@@ -108,7 +110,7 @@ const createFIBItem = ( element ) => {
 		original_answer_ids.push( id )
 		let response = {}
 		response['ident'] = id
-		response['mattext'] = element[key]
+		response['mattext'] = trimQuotes( element[key] )
 		item['resprocessing']['responses'].push( response )
 	})
 	item['original_answer_ids'] = original_answer_ids.join()
@@ -121,7 +123,7 @@ const createMFIBItem = ( element ) => {
 	item['type'] = 'fill_in_multiple_blanks_question'
 	item['points'] = element.points
 	item['presentation'] = {}
-	item['presentation']['mattext'] = element.question
+	item['presentation']['mattext'] = trimQuotes( element.question )
 	item['presentation']['responses'] = []
 	item['assessment_question_identifierref'] = getRandomIdent()
 	const keys = Object.keys( element )
@@ -136,7 +138,7 @@ const createMFIBItem = ( element ) => {
 			original_answer_ids.push( id )
 			let response = {}
 			response['ident'] = id
-			response['mattext'] = element[key]
+			response['mattext'] = trimQuotes( element[key] )
 			response['iteration'] = iteration
 			const placeholder = getMFIBPlaceholders( element.question )[iteration]
 			response['name'] = `response_${ placeholder }`

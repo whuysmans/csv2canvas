@@ -5,4 +5,8 @@ const groupBy = ( arr, property ) => {
 	}, {});
 }
 
-export { groupBy }
+const trimQuotes = ( str ) => {
+	return str.replace( /^"(.*?)"$/g, '$1' )
+}
+
+export { groupBy, trimQuotes }
