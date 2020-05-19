@@ -1,5 +1,7 @@
 # questionbankimporter
 
+Creates a Canvas-compatible QTI package from csv. Check the demo for more info. Use at own risk.
+
 [sample csv](./src/assets/test.csv)
 
 [demo](https://sleepy-gates-15bf1b.netlify.app/)
