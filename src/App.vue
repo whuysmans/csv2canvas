@@ -92,7 +92,7 @@
 				<li>Download de voorbeeld excel via de link hieronder.</li>
 				<li>Laat de header rij zeker staan.</li>
 				<li>Gebruik in de eerste kolom (vraagtype) de exacte afkortingen in hoofdletters.</li>
-				<li>MC: multiple choice, MR: meerdere antwoorden, FIB: korte antwoord vraag, MFIB: meerdere fill in the blanks</li>
+				<li>MC: multiple choice, MR: meerdere antwoorden, FIB: korte antwoord vraag, MFIB: meerdere fill in the blanks, ESSAY: open</li>
 				<li>De correct kolom werkt als volgt:</li>
 					<ul>
 						<li>voor MC: de header (kolomnaam) van het juiste antwoord</li>
