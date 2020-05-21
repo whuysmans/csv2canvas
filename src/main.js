@@ -32,7 +32,8 @@ Vue.config.ignoredElements = [
 	'not',
 	'and',
 	'response_str',
-	'render_fib'
+	'render_fib',
+	'other'
 ]
 
 new Vue({

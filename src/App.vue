@@ -73,6 +73,17 @@
 					<td>Napoli</td>
 					<td></td>
 				</tr>	
+				<tr>
+					<td>ESSAY</td>
+					<td>Beschrijf het verband tussen toonhoogte en ritme.</td>
+					<td>5</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
 			</tbody>
 		</table>
 		<div class="uploader">
@@ -86,7 +97,7 @@
 					<ul>
 						<li>voor MC: de header (kolomnaam) van het juiste antwoord</li>
 						<li>voor MR: de headernamen van alle juiste antwoorden, gescheiden door een spatie</li>
-						<li>voor FIB en MFIB moet in deze kolom niets ingevuld worden</li>
+						<li>voor FIB, MFIB en ESSAY moet in deze kolom niets ingevuld worden</li>
 					</ul>
 				<li>Je kan naar believen antwoordkolommen toevoegen, maar minimaal evenveel als het maximum aantal antwoorden over alle vragen heen.</li>
 				<li>Voor FIB vragen alle mogelijk juiste alternatieven (bv andere schrijfwijze) in de antwoordkolommen zetten.</li>

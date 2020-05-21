@@ -16,6 +16,9 @@ const createItems = ( json ) => {
 		} else if ( element.type === 'MFIB' ) {
 			const item = createMFIBItem( element )
 			items.push( item )
+		} else if ( element.type === 'ESSAY' ) {
+			const item = createEssayItem( element )
+			items.push( item )
 		}
 	});
 	return items
@@ -48,6 +51,19 @@ const createMCItem = ( element ) => {
 		item['presentation']['responses'].push( response )
 	})
 	item['original_answer_ids'] = original_answer_ids.join()
+	return item
+}
+
+const createEssayItem = ( element ) => {
+	let item = {}
+	item['ident'] = getRandomIdent()
+	item['type'] = 'essay_question'
+	item['points'] = element.points
+	item['assessment_question_identifierref'] = getRandomIdent()
+	item['presentation'] = {}
+	item['presentation']['rcardinality'] = 'Single'
+	item['presentation']['mattext'] = trimQuotes( element.question )
+	item['original_answer_ids'] = []
 	return item
 }
 

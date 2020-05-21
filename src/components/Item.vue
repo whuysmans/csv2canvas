@@ -12,7 +12,7 @@
 				</qtimetadatafield>
 				<qtimetadatafield>
 					<fieldlabel>original_answer_ids</fieldlabel>
-					<fieldentry>{{ item.original_answer_ids }}</fieldentry>
+					<fieldentry>{{ item.original_answer_ids.length > 0 ? item.original_answer_ids : '' }}</fieldentry>
 				</qtimetadatafield>
 				<qtimetadatafield>
 					<fieldlabel>assessment_question_identifierref</fieldlabel>
@@ -22,6 +22,7 @@
 		</itemmetadata>
 		<item-presentation v-if="isMC || isMR" :presentation="item.presentation" :respident="item.respident"></item-presentation>
 		<item-presentation-fib v-else-if="isFIB" :presentation="item.presentation" />
+		<item-presentation-essay v-else-if="isESSAY" :presentation="item.presentation" />
 		<item-presentation-mfib v-else-if="isMFIB" :presentation="item.presentation" />
 		<item-processing v-if="isMC" :respident="item.respident"></item-processing>
 		<item-processing-mr 
@@ -31,6 +32,7 @@
 		/>
 		<item-processing-fib v-else-if="isFIB" :responses="item.resprocessing.responses" />
 		<item-processing-mfib v-else-if="isMFIB" :responses="item.presentation.responses" />
+		<item-processing-essay v-else-if="isESSAY" />
 	</item>
 </template>
 <script>
@@ -41,6 +43,8 @@ import ItemPresentationFIB from './ItemPresentationFIB'
 import ItemProcessingFIB from './ItemProcessingFIB'
 import ItemPresentationMFIB from './ItemPresentationMFIB'
 import ItemProcessingMFIB from './ItemProcessingMFIB'
+import ItemPresentationEssay from './ItemPresentationEssay'
+import ItemProcessingEssay from './ItemProcessingEssay'
 
 export default {
 	components: {
@@ -50,7 +54,9 @@ export default {
 		'item-presentation-fib': ItemPresentationFIB,
 		'item-processing-fib': ItemProcessingFIB,
 		'item-presentation-mfib': ItemPresentationMFIB,
-		'item-processing-mfib': ItemProcessingMFIB
+		'item-processing-mfib': ItemProcessingMFIB,
+		'item-presentation-essay': ItemPresentationEssay,
+		'item-processing-essay': ItemProcessingEssay
 	},
 	props: ['item'],
 	created () {
@@ -68,6 +74,9 @@ export default {
 		},
 		isMFIB () {
 			return this.item.type === 'fill_in_multiple_blanks_question'
+		},
+		isESSAY () {
+			return this.item.type === 'essay_question'
 		}
 	}
 }
