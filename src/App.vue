@@ -106,7 +106,7 @@
 						<li>In de question kolom moeten de placeholders tussen vierkante haken zonder spaties (dat is de Canvas-conventie).</li>
 						<li>In de antwoordkolommen komen de juiste antwoorden. Om de antwoorden van de respectievelijke placeholders uit elkaar te houden, moet er een lege kolom tussengelaten worden. Voor juiste alternatieven binnen 1 placeholder geen kolom tussenlaten. Als dit onduidelijk is, bekijk dan nog eens grondig het voorbeeld hierboven.</li>
 					</ul>
-				<li>Als vragen of antwoorden komma's bevatten, zet dan heel de vraag of antwoord tussen dubbele aanhalingstekens.</li>
+				<li>Als vragen of antwoorden (punt)komma's bevatten, zet dan heel de vraag of antwoord tussen dubbele aanhalingstekens.</li>
 				<li>De Excel exporteren als csv met encoding utf-8. De naam van het csv-bestand bepaalt de naam van de toetsbank in Canvas. Pas eventueel aan.</li>
 				<li>CSV via de browse-knop hieronder converteren naar een qti-zip-pakketje.</li>
 				<li>Importeren in je Canvas-cursus via settings => import => qti-import.</li>
