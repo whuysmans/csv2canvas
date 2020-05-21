@@ -7,7 +7,6 @@
 			<conditionvar>
 				<other/>
 			</conditionvar>
-			<setvar action="Set" varname="SCORE">100</setvar>
 		</respcondition>
 	</resprocessing>
 </template>
