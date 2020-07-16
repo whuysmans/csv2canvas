@@ -28,8 +28,7 @@ export default {
 	data () {
 		return {
 			xmlns: 'http://www.imsglobal.org/xsd/ims_qtiasiv1p2',
-			assessmentIdent: getRandomIdent(),
-			firstTime: true
+			assessmentIdent: getRandomIdent()
 		}
 	},
 	props: ['items'],
@@ -37,7 +36,6 @@ export default {
 	},
 	updated () {
 		
-		this.firstTime = false
 		let zip = new JSZip()
 		const fileName = getRandomIdent()
 		zip.folder( 'import' )
